@@ -1,0 +1,12 @@
+import 'dart:convert';
+
+import 'models/OrdersModel.dart';
+
+var dataText =
+    '[{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"30 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"29 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"28 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"27 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"24 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"22 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"16 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"14 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"12 Aug 2021 - 16:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"12 Aug 2021 - 15:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"12 Jul 2021 - 15:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304},{"orderNo":"#54353453453","orderItemsCount":4,"orderDateTime":"06 Jul 2021 - 15:15 pm","orderSold":240,"orderDriver":30,"orderFood":210,"orderCommission":293,"orderNetProfit":304}]';
+
+var orderObjsJson = jsonDecode(dataText) as List;
+
+// convert json list to dart list
+List<Order> orderObj =
+    orderObjsJson.map((orderJson) => Order.fromJson(orderJson)).toList();
