@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 class OrderService {
+  // code not used
   late Dio dio;
   String baseUrl = "";
 

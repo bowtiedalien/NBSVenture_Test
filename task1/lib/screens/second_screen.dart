@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task1/custom_router.dart';
 import 'package:task1/models/OrdersModel.dart';
 import 'package:task1/styles.dart';
-
+import '../common_widgets.dart';
 import '../data.dart';
 
 List<Order> orderObjWithTodayDate = [];
@@ -29,6 +29,7 @@ class _SecondScreenState extends State<SecondScreen> {
           child: Column(
             children: [
               Container(
+                // appbar
                 width: 300,
                 height: 40,
                 decoration: BoxDecoration(
@@ -59,12 +60,13 @@ class _SecondScreenState extends State<SecondScreen> {
                 ),
               ),
               Container(
+                // horizontal info line after appbar
                 margin: EdgeInsets.fromLTRB(0, 19, 0, 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      totalTodayRevenue.toString() + " TL",
+                      totalTodayRevenue.toString() + " Tl",
                       style: TextStyle(
                           fontSize: 23,
                           color: Colors.white,
@@ -81,6 +83,7 @@ class _SecondScreenState extends State<SecondScreen> {
                 color: Colors.white,
               ),
               Flexible(
+                  // list of today's transactions
                   child: ListView.builder(
                 itemCount: orderObjWithTodayDate.length,
                 scrollDirection: Axis.vertical,
@@ -101,125 +104,6 @@ class _SecondScreenState extends State<SecondScreen> {
           ),
         ));
   }
-}
-
-Widget OrderCard(
-    String orderNo,
-    int orderItemsCount,
-    String orderDateTime,
-    int orderSold,
-    int orderDriver,
-    int orderFood,
-    int orderCommission,
-    int orderNetProfit) {
-  return Card(
-    margin: EdgeInsets.fromLTRB(25, 20, 25, 20),
-    shape: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: greenColor, width: 1)),
-    child: Container(
-      padding: EdgeInsets.all(13),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                orderNo,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                orderItemsCount.toString() + " items",
-                style: TextStyle(
-                    color: Color(0xFF1F6E1A),
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-          Container(
-            height: 14,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                orderDateTime,
-                style: TextStyle(color: Color(0xFF707070), fontSize: 12),
-              ),
-              RichText(
-                text: TextSpan(
-                  style: new TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                  ),
-                  children: <TextSpan>[
-                    new TextSpan(text: 'Sold '),
-                    new TextSpan(
-                        text: orderSold.toString(),
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: redColor,
-                            fontWeight: FontWeight.bold)),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text('Driver', style: TextStyle(color: greyColor, fontSize: 12)),
-              Text('Food', style: TextStyle(color: greyColor, fontSize: 12)),
-              Text('commission',
-                  style: TextStyle(color: greyColor, fontSize: 12)),
-              Text('Net profit',
-                  style: TextStyle(color: greyColor, fontSize: 12)),
-            ],
-          ),
-          Container(height: 9),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                orderDriver.toString(),
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
-              VerticalDivider(thickness: 1, width: 1, color: Colors.black),
-              Text(
-                orderFood.toString(),
-                style: TextStyle(
-                    color: redColor, fontSize: 15, fontWeight: FontWeight.bold),
-              ),
-              VerticalDivider(thickness: 1, width: 1, color: Colors.black),
-              Text(
-                orderCommission.toString(),
-                style: TextStyle(
-                    color: yellowColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
-              VerticalDivider(thickness: 1, width: 1, color: Colors.black),
-              Text(
-                orderNetProfit.toString(),
-                style: TextStyle(
-                    color: greenColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-  );
 }
 
 calculateTodaysRevenue() {

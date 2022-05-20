@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:task1/custom_router.dart';
 import 'package:task1/data.dart';
 import 'package:task1/screens/second_screen.dart';
+import 'common_widgets.dart';
 import 'styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -12,7 +13,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialButton(
                         minWidth: 20,
                         onPressed: () {
-                          // go to screen E
+                          // go to screen E - current screen
                         },
                         child: Icon(Icons.restaurant_menu))
                   ],
@@ -119,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Container(
+                // list of clickable cards in appbar
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -140,7 +141,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Container(height: 12),
                                 RevenueText(totalTodayRevenue),
                                 Container(height: 12),
-                                OrderCountText("5 Orders")
+                                OrderCountText(
+                                    orderObjWithTodayDate.length.toString() +
+                                        " orders")
                               ],
                             ),
                           ),
@@ -201,6 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: yellowColor,
         ),
         body: ListView.builder(
+            // order cards list
             itemCount: orderObj.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
