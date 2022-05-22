@@ -1,0 +1,4 @@
+#Sun May 22 14:26:57 EET 2022
+base.0=D\:\\Sarah files\\_WORK\\FlutterJob\\task1\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
